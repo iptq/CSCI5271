@@ -1,0 +1,26 @@
+In this project, we're exploring how the browser Firefox handles attacks against
+its APIs and how a certain extension developed by the researchers could be used
+to deny access to JavaScript APIs that regular websites shouldn't always need
+access to. During our last meeting, we discussed that some of the action steps
+for this project will involve trying to identify vulnerabilities in the
+extension itself as well as any possible API-blocking customizations that could
+be implemented directly into Firefox itself (for example, seeing if the script
+that is requesting access was part of the website itself or was part of a
+third-party script that was loaded to the user's oblivion.
+
+Since that day, I have cloned the Firefox source code and began compilation on
+my personal computer, which is running a slightly modified Ubuntu environment
+called Elementary OS.
+
+I've also downloaded the version of Firefox that the researchers specified and
+began investigating into some of the techniques used into blocking access to the
+APIs. The extension uses an eval statement to load the proxy that it's using
+into the page, then switching all of the APIs into the proxy code that does
+nothing before any page scripts start loading. (I'm going to investigate whether
+the browser mandates that add-on scripts must be loaded into the page before
+page scripts are loaded or not, and see if that kind of race condition could
+cause a hole in this extension.) I did some prodding around the JavaScript Proxy
+object to see if there is any way to retrieve the original object that was
+replaced, but I think it's impossible, so I'm going to try to attack some other
+vectors that the researchers may have not considered yet (for example trying to
+load my page script first).

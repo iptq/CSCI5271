@@ -1,0 +1,46 @@
+student@xenial64s:~$ sudo tcpdump -i ens4 -Av 'host 192.168.16.1'
+tcpdump: listening on ens4, link-type EN10MB (Ethernet), capture size 262144 bytes
+15:23:18.220531 IP (tos 0x0, ttl 64, id 54084, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.16.2.39824 > 192.168.16.1.http: Flags [S], cksum 0x60a8 (correct), seq 106577394, win 29200, options [mss 1460,sackOK,TS val 84995766 ecr 0,nop,wscale 7], length 0
+E..<.D@.@..#...........P.Z=.......r.`..........
+............
+15:23:18.221128 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.16.1.http > 192.168.16.2.39824: Flags [S.], cksum 0x024c (correct), seq 3214103152, ack 106577395, win 28960, options [mss 1460,sackOK,TS val 85018662 ecr 84995766,nop,wscale 7], length 0
+E..<..@.@..h.........P....Rp.Z=...q .L.........
+..H&........
+15:23:18.221200 IP (tos 0x0, ttl 64, id 54085, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.2.39824 > 192.168.16.1.http: Flags [.], cksum 0xa152 (correct), ack 1, win 229, options [nop,nop,TS val 84995767 ecr 85018662], length 0
+E..4.E@.@..*...........P.Z=...Rq.....R.....
+......H&
+15:23:18.221201 IP (tos 0x0, ttl 64, id 54086, offset 0, flags [DF], proto TCP (6), length 84)
+    192.168.16.2.39824 > 192.168.16.1.http: Flags [P.], cksum 0xd58b (correct), seq 1:33, ack 1, win 229, options [nop,nop,TS val 84995767 ecr 85018662], length 32: HTTP, length: 32
+	HEAD /secret/file.php HTTP/1.0
+E..T.F@.@..	...........P.Z=...Rq...........
+......H&HEAD /secret/file.php HTTP/1.0
+
+15:23:18.221709 IP (tos 0x0, ttl 64, id 6743, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.1.http > 192.168.16.2.39824: Flags [.], cksum 0xa134 (correct), ack 33, win 227, options [nop,nop,TS val 85018662 ecr 84995767], length 0
+E..4.W@.@............P....Rq.Z>......4.....
+..H&....
+15:23:18.221737 IP (tos 0x0, ttl 64, id 54087, offset 0, flags [DF], proto TCP (6), length 165)
+    192.168.16.2.39824 > 192.168.16.1.http: Flags [P.], cksum 0x74f4 (correct), seq 33:146, ack 1, win 229, options [nop,nop,TS val 84995767 ecr 85018662], length 113: HTTP
+E....G@.@..............P.Z>...Rq....t......
+......H&Host: 192.168.16.1
+Connection: close
+Accept-language: en
+Authorization: Basic c2VvaDE2OmdlaGVpbW5pczYxOTg=
+
+
+15:23:18.222146 IP (tos 0x0, ttl 64, id 6744, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.1.http > 192.168.16.2.39824: Flags [.], cksum 0xa0c3 (correct), ack 146, win 227, options [nop,nop,TS val 85018662 ecr 84995767], length 0
+E..4.X@.@............P....Rq.Z>............
+..H&....
+^C
+7 packets captured
+12 packets received by filter
+5 packets dropped by kernel
+
+Base64-decoded version of "c2VvaDE2OmdlaGVpbW5pczYxOTg=" is "seoh16:geheimnis6198"
+Username: seoh16
+Password: geheimnis6198
+

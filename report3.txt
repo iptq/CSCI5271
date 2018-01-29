@@ -1,0 +1,20 @@
+For this progress report, I've continued investigating the app, especially in
+ways it could be circumvented. Through this investigation, I've learned a lot
+about how Google Chrome extensions actually inject scripts into the page, as
+well as security implications of doing so. In particular, I learned that content
+scripts belonging to extensions are executed in a separate space from the page,
+and so the only way they could possibly interact with the page is through
+appending text-only attributes to the page when it loads.
+
+I also patched the bug where window.open could be exploited to use the APIs of
+another open window, by replacing that call with a Proxy object that calls the
+blocking function on the returned window object. Elliott made the addition of
+blocking all APIs recursively from there, something I overlooked. Here's a link
+to my fork of the extension, including the Proxy patch developed by me and
+Elliott:
+
+https://github.com/iptq/web-api-manager
+
+Finally, our group spent some time working on the paper, which Sam submitted a
+first draft of tonight.
+

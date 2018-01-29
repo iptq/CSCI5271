@@ -1,0 +1,46 @@
+Question 1
+
+Potential attacks would be attempts to change certain information in the
+database, such as an attempt to modify grades or to gain unauthorized access to
+exam questions and solutions ahead of time. These attacks could potentially be
+performed by mischievous students or anyone else who has knowledge about this
+database. Threats we should explicitly exclude from consideration are those
+beyond the scope of the software of the database, for example, an attacker
+attempting to gain access physically by breaking into the server room holding
+the database.
+
+Supposing that the database was stored on the instructor's personal laptop, the
+most basic protection that one can employ is a password on the instructor's
+laptop account (and filesystem encryption, if possible). This will ensure that
+people who have physical access to the professor's computer cannot simply gain
+access to important files. Another security measure that could be employed is a
+military-grade laptop bag with a physical lock. This prevents people who steal
+the laptop from accessing or destroying the data. Relocation to Fort Knox would
+also be a plus for security, although without a network card it may be hard to
+communicate with the database.
+
+Question 2
+
+Part (a)
+
+  Since the Perl script is passing user input directly to another application
+  without sanitization, anything the user enters could be potentially treated as
+  code. For example, if the attacker enters the username:
+
+   Bob; rm -rf ~/*
+  
+  they could potentially perform any command they want, since the backtick
+  syntax will simply pass the entire string to the shell, and the shell knows
+  nothing about the format of the command, and that the second command was
+  actually a malicious user input.
+
+  One way to improve the code is to check for the existence of characters that
+  could be interpreted as code ("blacklisting" certain characters). Of course,
+  this requires that the list must be completely exhaustive, otherwise it serves
+  absolutely no value. The alternative is to only allow usernames to contain
+  certain characters (for example, alphanumeric characters) that could not be
+  interpreted by the shell to be instructions.
+
+Part (b)
+
+  

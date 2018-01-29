@@ -1,0 +1,19 @@
+An important update happened to the extension we were observing, it expanded and
+began using a larger JSON-based API for disabling web APIs. Our project team
+decided to focus on extending the behavior of this extension.
+
+Our group has decided to extend the web Audio API and look into what APIs need
+to be blocked and compile a data file containing our findings. I've also noticed
+that the extension has not deviated from their code-generating eval style, so
+I'm currently looking at workarounds from using eval (creating a script tag and
+inserting it into the DOM).
+
+Additionally, when it comes to running on sites that have a very strict Content
+Security Policy, they manually inject the sha-256 of the script into the header
+before the script is injected into the page. However, doing a quick search on
+this approach reveals that it's not completely reliable[1], and conflicting
+extensions may cause the script to not be pardoned.
+
+[1]: https://transitory.technology/browser-extensions-and-csp-headers
+
+

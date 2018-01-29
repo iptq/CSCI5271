@@ -1,0 +1,84 @@
+student@xenial64s:~$ sudo tcpdump -i ens4 -Av 'host 192.168.16.1'
+tcpdump: listening on ens4, link-type EN10MB (Ethernet), capture size 262144 bytes
+15:26:32.698914 IP (tos 0x0, ttl 64, id 31355, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [S], cksum 0xda62 (correct), seq 902420185, win 29200, options [mss 1460,sackOK,TS val 85044386 ecr 0,nop,wscale 7], length 0
+E..<z{@.@..............P5.........r..b.........
+............
+15:26:32.699188 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    192.168.16.1.http > 192.168.16.2.39826: Flags [S.], cksum 0x9cf2 (correct), seq 3989652829, ack 902420186, win 28960, options [mss 1460,sackOK,TS val 85067282 ecr 85044386,nop,wscale 7], length 0
+E..<..@.@..h.........P....E]5.....q ...........
+............
+15:26:32.699831 IP (tos 0x0, ttl 64, id 31356, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [.], cksum 0x3bf9 (correct), ack 1, win 229, options [nop,nop,TS val 85044387 ecr 85067282], length 0
+E..4z|@.@..............P5.....E^....;......
+........
+15:26:32.700913 IP (tos 0x0, ttl 64, id 31357, offset 0, flags [DF], proto TCP (6), length 146)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [P.], cksum 0x98e7 (correct), seq 1:95, ack 1, win 229, options [nop,nop,TS val 85044387 ecr 85067282], length 94: HTTP, length: 94
+	HEAD /secret/cheese.php HTTP/1.1
+	Host: 192.168.16.1
+	User-Agent: curl/7.47.0
+	Accept: */*
+	
+E...z}@.@..............P5.....E^...........
+........HEAD /secret/cheese.php HTTP/1.1
+Host: 192.168.16.1
+User-Agent: curl/7.47.0
+Accept: */*
+
+
+15:26:32.701336 IP (tos 0x0, ttl 64, id 17228, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.1.http > 192.168.16.2.39826: Flags [.], cksum 0x3b9d (correct), ack 95, win 227, options [nop,nop,TS val 85067282 ecr 85044387], length 0
+E..4CL@.@.V$.........P....E^5..8....;......
+........
+15:26:32.701752 IP (tos 0x0, ttl 64, id 17229, offset 0, flags [DF], proto TCP (6), length 360)
+    192.168.16.1.http > 192.168.16.2.39826: Flags [P.], cksum 0x58ff (correct), seq 1:309, ack 95, win 227, options [nop,nop,TS val 85067282 ecr 85044387], length 308: HTTP, length: 308
+	HTTP/1.1 401 Unauthorized
+	Date: Tue, 14 Nov 2017 21:26:32 GMT
+	Server: Apache/2.4.18 (Ubuntu)
+	WWW-Authenticate: Digest realm="Cheese", nonce="DLN7CvhdBQA=632d10cb5e45f339837ff3923a77459fbb1e4ced", algorithm=MD5, domain="http://localhost/secret/", qop="auth"
+	Content-Type: text/html; charset=iso-8859-1
+	
+E..hCM@.@.T..........P....E^5..8....X......
+........HTTP/1.1 401 Unauthorized
+Date: Tue, 14 Nov 2017 21:26:32 GMT
+Server: Apache/2.4.18 (Ubuntu)
+WWW-Authenticate: Digest realm="Cheese", nonce="DLN7CvhdBQA=632d10cb5e45f339837ff3923a77459fbb1e4ced", algorithm=MD5, domain="http://localhost/secret/", qop="auth"
+Content-Type: text/html; charset=iso-8859-1
+
+
+15:26:32.702537 IP (tos 0x0, ttl 64, id 31358, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [.], cksum 0x3a5f (correct), ack 309, win 237, options [nop,nop,TS val 85044387 ecr 85067282], length 0
+E..4z~@.@..............P5..8..F.....:_.....
+........
+15:26:32.704483 IP (tos 0x0, ttl 64, id 17230, offset 0, flags [DF], proto TCP (6), length 323)
+    192.168.16.1.http > 192.168.16.2.39826: Flags [P.], cksum 0x40d2 (correct), seq 309:580, ack 474, win 235, options [nop,nop,TS val 85067283 ecr 85044388], length 271: HTTP, length: 271
+	HTTP/1.1 200 OK
+	Date: Tue, 14 Nov 2017 21:26:32 GMT
+	Server: Apache/2.4.18 (Ubuntu)
+	Authentication-Info: rspauth="1f407e49d01115b32ac04c4c4e5fff55", cnonce="MjkxNThiMGE2NjZkMTUzMzk2ZjY4NTkwODgwNmJlMDc=", nc=00000001, qop=auth
+	Content-Type: text/html; charset=UTF-8
+	
+E..CCN@.@.U..........P....F.5.......@......
+........HTTP/1.1 200 OK
+Date: Tue, 14 Nov 2017 21:26:32 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Authentication-Info: rspauth="1f407e49d01115b32ac04c4c4e5fff55", cnonce="MjkxNThiMGE2NjZkMTUzMzk2ZjY4NTkwODgwNmJlMDc=", nc=00000001, qop=auth
+Content-Type: text/html; charset=UTF-8
+
+
+15:26:32.705142 IP (tos 0x0, ttl 64, id 31360, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [F.], cksum 0x37ca (correct), seq 474, ack 580, win 245, options [nop,nop,TS val 85044388 ecr 85067283], length 0
+E..4z.@.@..............P5.....G.....7......
+........
+15:26:32.705626 IP (tos 0x0, ttl 64, id 17231, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.1.http > 192.168.16.2.39826: Flags [F.], cksum 0x37d3 (correct), seq 580, ack 475, win 235, options [nop,nop,TS val 85067283 ecr 85044388], length 0
+E..4CO@.@.V!.........P....G.5.......7......
+........
+15:26:32.706244 IP (tos 0x0, ttl 64, id 31361, offset 0, flags [DF], proto TCP (6), length 52)
+    192.168.16.2.39826 > 192.168.16.1.http: Flags [.], cksum 0x37c9 (correct), ack 581, win 245, options [nop,nop,TS val 85044388 ecr 85067283], length 0
+E..4z.@.@..............P5.....G.....7......
+........
+^C
+11 packets captured
+12 packets received by filter
+1 packet dropped by kernel

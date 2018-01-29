@@ -1,0 +1,3 @@
+student@xenial64s:~$ curl http://192.168.16.1/secret/file.php -H "Authorization: Basic c2VvaDE2OmdlaGVpbW5pczYxOTg="
+"The common question that gets asked in business is, ‘why?’ That’s a good question, but an equally valid question is, ‘why not?’" – Jeff Bezos
+
